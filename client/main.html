@@ -1,0 +1,70 @@
+<head>
+  <title>Student Information</title>
+</head>
+
+<body> 
+  <div class="container-fluid">
+  <h1>Student Information</h1>
+  {{> newStudent }}
+  <br><br>
+  <table border="1" class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Subjects</th>
+      <th scope="col">Edit</th>
+      <th scope="col"> Delete</th>
+    </thead>
+    <tbody>
+      {{> students }}
+    </tbody>
+  </table>
+ 
+</div>
+</body>
+
+<template name="students">
+ {{#each allinfo }}
+      <tr>
+        <td>{{ stname }}</td>
+        <td>{{ email }}</td>
+        <td>{{ phone }}</td>
+        <td>{{ dob }}</td>
+        <td>{{ subjects }}</td>
+        <td><a href="#" id="edit" class="btn btn-sm btn-info">Edit</a></td>
+        <td><a href="#" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+      </tr>
+  
+  {{else}}
+  <p>No Students Found</p>
+ {{/each}}
+
+ 
+</template>
+
+<template name="newStudent">
+  <form id="student-form" class="form-inline" method="POST">
+    <div class="form-group">
+      <input type="text" class="form-control m-2" name="stname" placeholder="name">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control m-2" name="email" placeholder="email">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control m-2" name="phone" placeholder="phone">
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control m-2" name="dob" placeholder="date of birth">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control m-2" name="subjects" placeholder="subjects">
+    </div>
+  
+    <input type="submit" class="btn btn-sm btn-primary" value="Add Student">
+  </form>
+  
+</template>
+
+ 
